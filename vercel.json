@@ -4,7 +4,6 @@
         {"src": "*.js"},
         {"src": "*.css"},
         {"src": "/public"},
-        {"use": "@vercel/node"}
     ],
     "routes": [
       {
