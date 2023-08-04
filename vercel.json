@@ -3,9 +3,7 @@
     "builds": [
         {"src": "/index.js"},
         {"public": true},
-        {"use": "@vercel/node"},
-        {"framework": "nodejs"},
-        {"installCommand": "npm install"}
+        {"use": "@vercel/node"}
     ],
     "routes": [
       {
