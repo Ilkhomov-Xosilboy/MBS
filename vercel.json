@@ -2,9 +2,10 @@
     "version": 2,
     "builds": [
         {"src": "*.js"},
-        {"src": "*.css"},
-        {"src": "/public"},
-        {"use": "@vercel/node"}
+        {"public": true},
+        {"use": "@vercel/node"},
+        {"framework": "nodejs"},
+        {"installCommand": "npm install"}
     ],
     "routes": [
       {
@@ -12,4 +13,5 @@
         "dest": "/"
       }
     ]
+    
   }
