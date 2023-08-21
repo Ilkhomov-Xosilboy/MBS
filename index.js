@@ -5,6 +5,7 @@ const expressEdge = require("express-edge");
 const mongoose = require("mongoose");
 const PORT = process.env.PORT || 2000;
 const Post = require ("./models/Post")
+
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 
@@ -53,18 +54,22 @@ app.get("/vedio-bolimi", (req, res) => {
   res.render("admin-vedio-qoshish");
 });
 
-app.post("/MBS-admin", (req, res) => {
-  console.log(req.body);
-  Post.create(req.body)
-    .then((post) => {
-      console.log("Post saved successfully:", post);
-      res.redirect("/");
-    })
-    .catch((err) => {
-      console.error("Error saving post:", err);
-      res.redirect("/MBS-admin?error=1");
-    });
+app.post("/MBS-admin", async (req, res) => {
+  try {
+    console.log(req.body);
+    const post = await Post.create(req.body);
+    console.log("Post saved successfully:", post);
+
+    const telegramChannelLink = 'https://t.me/mbsdarslik';
+    res.redirect(telegramChannelLink);
+  } catch (error) {
+    console.error("Error saving post:", error);
+    res.redirect("/MBS-admin?error=1");
+  }
 });
+
+
+
 
 // OKpPENa8L70KSVwK
 // mongodb+srv://Freezzer:OKpPENa8L70KSVwK@mbs.lsrkdim.mongodb.net/MBS
